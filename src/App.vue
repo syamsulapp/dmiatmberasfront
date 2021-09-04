@@ -1,7 +1,19 @@
 <template>
   <img alt="Vue logo" src="./assets/dmi.jpg" />
   <h1>ATM BERAS DAN TELUR PROVINSI SULAWESI TENGGARA</h1>
-  <div class="container my-5">
+  <br />
+  <div
+    v-for="(atmberas, index) in atmberas"
+    :key="index"
+    class="d-flex justify-content-center"
+  >
+    <h5 v-if="atmberas.beras != 0">{{ atmberas.beras }} {{ "liter" }}</h5>
+    <h5 v-if="atmberas.telur && atmberas.telur_beras != 0">
+      {{ atmberas.telur_beras }} {{ "liter" }} {{ atmberas.telur }}
+      {{ "telur" }}
+    </h5>
+  </div>
+  <!-- <div class="container my-5">
     <div class="row justify-content-center">
       <div class="col-8">
         <div class="card rounded shadow">
@@ -22,7 +34,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -53,7 +65,7 @@ export default {
 };
 setTimeout(function () {
   location.reload();
-}, 2000);
+}, 1000);
 </script>
 <style>
 #app {
