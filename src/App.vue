@@ -2,6 +2,7 @@
   <img alt="Vue logo" src="./assets/dmi.jpg" />
   <h1>ATM BERAS DAN TELUR PROVINSI SULAWESI TENGGARA</h1>
   <br />
+  <body onload="Javascript:Refresh_page(5000);">
   <div
     v-for="(atmberas, index) in atmberas"
     :key="index"
@@ -13,28 +14,7 @@
       {{ "telur" }}
     </h5>
   </div>
-  <!-- <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-8">
-        <div class="card rounded shadow">
-          <div class="card-header">HASIL DATA</div>
-          <div class="card-body">
-            <table class="table">
-              <tr v-for="(atmberas, index) in atmberas" :key="index">
-                <td v-if="atmberas.beras != 0">
-                  {{ atmberas.beras }} {{ "liter" }}
-                </td>
-                <td v-if="atmberas.telur && atmberas.telur_beras != 0">
-                  {{ atmberas.telur_beras }} {{ "liter" }} {{ atmberas.telur }}
-                  {{ "telur" }}
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+  </body>
 </template>
 
 <script>
@@ -49,7 +29,7 @@ export default {
     onMounted(() => {
       // fungsinya on mount untuk mengambil data enpoint API
       axios
-        .get("http://192.168.1.10/BackendAtmBerasUMK/public/api/getApiTelur")
+        .get("http://localhost/BackendAtmBerasUMK/public/api/getApiTelur")
         .then((result) => {
           atmberas.value = result.data;
         })
@@ -63,9 +43,9 @@ export default {
     };
   },
 };
-setTimeout(function () {
-  location.reload();
-}, 1000);
+function Refresh_page(t){
+  setTimeout("location.reload(true);",t)
+}
 </script>
 <style>
 #app {
